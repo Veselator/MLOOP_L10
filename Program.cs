@@ -6,9 +6,19 @@ namespace MLOOP_L10
 {
     internal class Program
     {
+        static string[] line = { 
+            "//////////////////",
+            "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"
+        };
         static async Task Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
+
+            Console.WriteLine($"\n {line[0]}    Лабораторна робота №10    {line[0]}");
+            Console.WriteLine(  $" {line[1]}      Тема: Серіалізація      {line[1]}");
+            Console.WriteLine(  $" {line[0]}           Виконав            {line[0]}");
+            Console.WriteLine(  $" {line[1]}        Соломка Борис         {line[1]}\n");
+
             File[] files =
             {
                 new File("document1.txt", new DateTime(2026, 1, 15), 5, 1024),
