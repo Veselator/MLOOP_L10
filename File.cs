@@ -1,4 +1,6 @@
-﻿namespace MLOOP_L10
+﻿using System.Drawing;
+
+namespace MLOOP_L10
 {
     public class File
     {
@@ -8,6 +10,14 @@
         public long Size { get; set; }
 
         public File() { }
+
+        public File(string name)
+        {
+            Name = name;
+            CreationDate = DateTime.Now;
+            AccessCount = 0;
+            Size = 0;
+        }
 
         public File(string name, DateTime creationDate, int accessCount, long size)
         {
