@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+﻿using System.Text.Json.Serialization;
 
 namespace MLOOP_L10
 {
@@ -16,7 +16,7 @@ namespace MLOOP_L10
             Name = name;
             CreationDate = DateTime.Now;
             AccessCount = 0;
-            Size = 0;
+            Size = new Random().Next(0, 10000);
         }
 
         public File(string name, DateTime creationDate, int accessCount, long size)
@@ -27,15 +27,25 @@ namespace MLOOP_L10
             Size = size;
         }
 
-        public override string ToString()
+        public void IncrementAccessCount()
         {
             AccessCount++;
+        }
+
+        public override string ToString()
+        {
             return $" Ім'я файлу:      \t\t{Name}\n Дата створення: \t\t{CreationDate.ToShortDateString()}\n Кількість звернень: \t\t{AccessCount}\n Розмір файлу:    \t\t{Size} байт";
         }
 
         public override int GetHashCode()
         {
-            return ToString().GetHashCode();
+            return Name?.GetHashCode() ?? 0;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is File other) return Name == other.Name;
+            return false;
         }
     }
 }
